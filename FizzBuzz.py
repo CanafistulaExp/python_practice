@@ -1,5 +1,5 @@
 print("Welcome to FizzBuzz!")
-n = int(input())
+n = int(input("Escolha um número inteiro para começar o jogo: "))
 
 def fizzbuzz(num = int()):
   for i in range(1,num+1):
