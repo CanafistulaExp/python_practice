@@ -41,13 +41,17 @@ def calculate_average_grade(name):
         media += elemento
       return (media/len(student_records[name]["grades"]))
 
+def list_students_by_course(course):
+  list_name = []
+  for element in student_records:
+    if course in student_records[element]["courses"]:
+      list_name.append(element)
+  return list_name
 
 add_student("Alice", 20, ["Math", "Physics"])
-add_student("Bob", 22, ["Biology", "Chemistry"])
-add_grade("Alice", 90)
-add_grade("Alice", 85)
-add_grade("Bob", 75)
-print(calculate_average_grade("Alice"))  # Deve retornar 87.5
-print(calculate_average_grade("Bob"))  # Deve retornar 75.0
-print(calculate_average_grade("Charlie"))  # Aluno inexistente, deve imprimir a mensagem e retornar None
-print(calculate_average_grade("Alice"))  # Deve retornar 87.5 novamente
+add_student("Bob", 22, ["Math", "Biology"])
+add_student("Diana", 23, ["Chemistry", "Physics"])
+print(list_students_by_course("Math"))  # Should return ["Alice", "Bob"]
+print(list_students_by_course("Physics"))  # Should return ["Alice", "Diana"]
+print(list_students_by_course("Biology"))  # Should return ["Bob"]
+print(list_students_by_course("History"))  # Should return an empty list
