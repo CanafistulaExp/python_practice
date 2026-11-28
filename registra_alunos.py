@@ -48,6 +48,27 @@ def list_students_by_course(course):
       list_name.append(element)
   return list_name
 
+def filter_top_students(threshold = float()):
+  lista_melhores_alunos = []
+  media = float()
+  for element in student_records:
+    media = calculate_average_grade(element)
+    if media > threshold:
+      lista_melhores_alunos.append(element)
+      media = float(0)
+  return lista_melhores_alunos
+
+add_student("Alice", 20, ["Math", "Physics"])
+add_student("Bob", 22, ["Math", "Biology"])
+add_student("Diana", 23, ["Chemistry", "Physics"])
+add_grade("Alice", 90)
+add_grade("Alice", 85)
+add_grade("Bob", 75)
+add_grade("Diana", 95)
+print(filter_top_students(80))  # Deve retornar ["Alice", "Diana"]
+print(filter_top_students(90))  # Deve retornar ["Diana"]
+print(filter_top_students(100))  # Deve retornar uma lista vazia
+
 add_student("Alice", 20, ["Math", "Physics"])
 add_student("Bob", 22, ["Math", "Biology"])
 add_student("Diana", 23, ["Chemistry", "Physics"])
